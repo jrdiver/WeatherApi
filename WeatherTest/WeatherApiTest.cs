@@ -7,19 +7,23 @@ namespace WeatherTest
     [TestClass]
     public class WeatherApiTest
     {
-        private WeatherDotGov api = new WeatherDotGov("WeatherAppTest");
-        private WeatherLocation location;
+        private readonly WeatherDotGov api = new WeatherDotGov("WeatherAppTest");
         private const double Latitude = 44.255875483521606;
         private const double Longitude = -88.46596364287998;
+        private readonly WeatherLocation location;
+
+        public WeatherApiTest()
+        {
+            location = api.GetLocation(Latitude, Longitude);
+        }
 
         [TestMethod]
         public void GetLocation()
         {
-            location = api.GetLocation(Latitude, Longitude);
-            Assert.AreEqual("GRB",location.gridId);
-            Assert.AreEqual("KGRB",location.radarStation);
-            Assert.AreEqual(64,location.gridX);
-            Assert.AreEqual(18,location.gridY);
+            Assert.AreEqual("GRB",location.Properties.GridOffice);
+            Assert.AreEqual("KGRB",location.Properties.RadarStation);
+            Assert.AreEqual(64,location.Properties.GridX);
+            Assert.AreEqual(18,location.Properties.GridY);
         }
     }
 }

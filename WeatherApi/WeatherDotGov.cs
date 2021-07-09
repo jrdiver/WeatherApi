@@ -13,6 +13,7 @@ namespace WeatherApi
         /// <summary> Sent as the User Agent.  As Weather.Gov lists - "If you include contact information (website or email), we can contact you if your string is associated to a security event" </summary>
         public string AppNameIdentifier;
         internal WebConnect API = new WebConnect();
+        public WeatherLocation Location = new WeatherLocation();
 
 
         public WeatherDotGov(string appNameIdentifier)
@@ -24,8 +25,8 @@ namespace WeatherApi
         public WeatherLocation GetLocation(double latitude, double longitude)
         {
             string response = API.GetUrl("points/" + latitude + "," + longitude);
-            WeatherLocation item = JsonConvert.DeserializeObject<WeatherLocation>(response);
-            return item;
+            Location = JsonConvert.DeserializeObject<WeatherLocation>(response);
+            return Location;
         }
 
 

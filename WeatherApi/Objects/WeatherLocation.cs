@@ -1,139 +1,124 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace WeatherApi.Objects
 {
+    public class WeatherLocation
+    {
+        [JsonProperty("@context")]
+        public List<object> Context { get; set; }
+
+        [JsonProperty("id")]
+        public string PointsLink { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("geometry")]
+        public Geometry Geometry { get; set; }
+
+        [JsonProperty("properties")]
+        public ForecastLinks Properties { get; set; }
+    }
+
     public class Geometry
     {
-        [JsonProperty("@id")]
-        public string Id { get; set; }
-
-        [JsonProperty("@type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("coordinates")]
+        public List<double> Coordinates { get; set; }
     }
 
     public class Distance
     {
+        [JsonProperty("value")]
+        public double Value { get; set; }
+
+        [JsonProperty("unitCode")]
+        public string UnitCode { get; set; }
+    }
+
+    public class CityInfo
+    {
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("distance")]
+        public Distance Distance { get; set; }
+
+        [JsonProperty("bearing")]
+        public Distance Bearing { get; set; }
+    }
+
+    public class ForecastLinks
+    {
+
         [JsonProperty("@id")]
         public string Id { get; set; }
 
         [JsonProperty("@type")]
         public string Type { get; set; }
-        public double value { get; set; }
-        public string unitCode { get; set; }
-    }
 
-    public class Bearing
-    {
-        [JsonProperty("@type")]
-        public string Type { get; set; }
-        public int value { get; set; }
-        public string unitCode { get; set; }
-    }
+        [JsonProperty("cwa")]
+        public string Cwa { get; set; }
 
-    public class Value
-    {
-        [JsonProperty("@id")]
-        public string Id { get; set; }
-    }
+        [JsonProperty("forecastOffice")]
+        public string ForecastOffice { get; set; }
 
-    public class UnitCode
-    {
-        [JsonProperty("@id")]
-        public string Id { get; set; }
+        [JsonProperty("gridId")]
+        public string GridOffice { get; set; }
 
-        [JsonProperty("@type")]
-        public string Type { get; set; }
-    }
+        [JsonProperty("gridX")]
+        public int GridX { get; set; }
 
-    public class ForecastOffice
-    {
-        [JsonProperty("@type")]
-        public string Type { get; set; }
-    }
+        [JsonProperty("gridY")]
+        public int GridY { get; set; }
 
-    public class ForecastGridData
-    {
-        [JsonProperty("@type")]
-        public string Type { get; set; }
-    }
+        [JsonProperty("forecast")]
+        public string ForecastUrl { get; set; }
 
-    public class PublicZone
-    {
-        [JsonProperty("@type")]
-        public string Type { get; set; }
-    }
+        [JsonProperty("forecastHourly")]
+        public string ForecastHourlyUrl { get; set; }
 
-    public class County
-    {
-        [JsonProperty("@type")]
-        public string Type { get; set; }
-    }
+        [JsonProperty("forecastGridData")]
+        public string ForecastGridDataUrl { get; set; }
 
-    public class Context
-    {
-        [JsonProperty("@version")]
-        public string Version { get; set; }
-        public string wx { get; set; }
-        public string s { get; set; }
-        public string geo { get; set; }
-        public string unit { get; set; }
+        [JsonProperty("observationStations")]
+        public string ObservationStationsUrl { get; set; }
 
-        [JsonProperty("@vocab")]
-        public string Vocab { get; set; }
-        public Geometry geometry { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public Distance distance { get; set; }
-        public Bearing bearing { get; set; }
-        public Value value { get; set; }
-        public UnitCode unitCode { get; set; }
-        public ForecastOffice forecastOffice { get; set; }
-        public ForecastGridData forecastGridData { get; set; }
-        public PublicZone publicZone { get; set; }
-        public County county { get; set; }
+        [JsonProperty("relativeLocation")]
+        public RelativeLocation RelativeLocation { get; set; }
+
+        [JsonProperty("forecastZone")]
+        public string ForecastZoneUrl { get; set; }
+
+        [JsonProperty("county")]
+        public string CountyUrl { get; set; }
+
+        [JsonProperty("fireWeatherZone")]
+        public string FireWeatherZoneUrl { get; set; }
+
+        [JsonProperty("timeZone")]
+        public string TimeZone { get; set; }
+
+        [JsonProperty("radarStation")]
+        public string RadarStation { get; set; }
     }
 
     public class RelativeLocation
     {
-        public string city { get; set; }
-        public string state { get; set; }
-        public string geometry { get; set; }
-        public Distance distance { get; set; }
-        public Bearing bearing { get; set; }
-    }
-
-    public class WeatherLocation
-    {
-        [JsonProperty("@context")]
-        public Context Context { get; set; }
-
-        [JsonProperty("@id")]
-        public string Id { get; set; }
-
-        [JsonProperty("@type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
-        public string geometry { get; set; }
-        public string cwa { get; set; }
-        public string forecastOffice { get; set; }
-        public string gridId { get; set; }
-        public int gridX { get; set; }
-        public int gridY { get; set; }
-        public string forecast { get; set; }
-        public string forecastHourly { get; set; }
-        public string forecastGridData { get; set; }
-        public string observationStations { get; set; }
-        public RelativeLocation relativeLocation { get; set; }
-        public string forecastZone { get; set; }
-        public string county { get; set; }
-        public string fireWeatherZone { get; set; }
-        public string timeZone { get; set; }
-        public string radarStation { get; set; }
+
+        [JsonProperty("geometry")]
+        public Geometry Geometry { get; set; }
+
+        [JsonProperty("properties")]
+        public CityInfo Properties { get; set; }
     }
-
-
 }

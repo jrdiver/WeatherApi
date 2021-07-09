@@ -23,7 +23,7 @@ namespace WeatherApi.Class
             {
                 client = new WebClient();
                 client.Headers.Add("user-agent", AppNameIdentifier);
-                client.Headers.Add("Accept", "application/ld+json");
+                //client.Headers.Add("Accept", "application/ld+json");
                 client.Credentials = CredentialCache.DefaultCredentials;
                 Stream data = client.OpenRead(BaseUrl + url);
                 StreamReader reader = new StreamReader(data ?? throw new InvalidOperationException());
