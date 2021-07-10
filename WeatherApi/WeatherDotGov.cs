@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using WeatherApi.Class;
 using WeatherApi.Objects;
 
@@ -27,6 +25,20 @@ namespace WeatherApi
             string response = API.GetUrl("points/" + latitude + "," + longitude);
             Location = JsonConvert.DeserializeObject<WeatherLocation>(response);
             return Location;
+        }
+
+        public Forecast GetForecast()
+        {
+            string response = API.GetUrl(Location.Properties.ForecastUrl, false);
+            Forecast forecast = JsonConvert.DeserializeObject<Forecast>(response);
+            return forecast;
+        }
+
+        public Forecast GetHourByHour()
+        {
+            string response = API.GetUrl(Location.Properties.ForecastHourlyUrl, false);
+            Forecast forecast = JsonConvert.DeserializeObject<Forecast>(response);
+            return forecast;
         }
 
 

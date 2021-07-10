@@ -25,5 +25,19 @@ namespace WeatherTest
             Assert.AreEqual(64,location.Properties.GridX);
             Assert.AreEqual(18,location.Properties.GridY);
         }
+
+        [TestMethod]
+        public void GetForecast()
+        {
+            Forecast forecast = api.GetForecast();
+            Assert.AreEqual(14, forecast.Properties.Periods.Count);
+        }
+
+        [TestMethod]
+        public void GetHourByHour()
+        {
+            Forecast forecast = api.GetHourByHour();
+            Assert.AreEqual(156, forecast.Properties.Periods.Count);
+        }
     }
 }

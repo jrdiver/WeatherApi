@@ -13,7 +13,7 @@ namespace WeatherApi.Class
         private WebClient client = new WebClient();
 
         /// <summary> Loads a the specified URL </summary>
-        internal string GetUrl(string url)
+        internal string GetUrl(string url, bool useBaseURL = true)
         {
             if (string.IsNullOrWhiteSpace(BaseUrl) || string.IsNullOrWhiteSpace(AppNameIdentifier))
             {
@@ -21,11 +21,16 @@ namespace WeatherApi.Class
             }
             try
             {
+                if (useBaseURL)
+                {
+                    url = BaseUrl + url;
+                }
+
                 client = new WebClient();
                 client.Headers.Add("user-agent", AppNameIdentifier);
                 //client.Headers.Add("Accept", "application/ld+json");
                 client.Credentials = CredentialCache.DefaultCredentials;
-                Stream data = client.OpenRead(BaseUrl + url);
+                Stream data = client.OpenRead(url);
                 StreamReader reader = new StreamReader(data ?? throw new InvalidOperationException());
                 return reader.ReadToEnd();
             }

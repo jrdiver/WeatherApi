@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using WeatherApi.Objects.SubObjects;
 
 namespace WeatherApi.Objects
 {
@@ -20,39 +20,6 @@ namespace WeatherApi.Objects
 
         [JsonProperty("properties")]
         public ForecastLinks Properties { get; set; }
-    }
-
-    public class Geometry
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("coordinates")]
-        public List<double> Coordinates { get; set; }
-    }
-
-    public class Distance
-    {
-        [JsonProperty("value")]
-        public double Value { get; set; }
-
-        [JsonProperty("unitCode")]
-        public string UnitCode { get; set; }
-    }
-
-    public class CityInfo
-    {
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("distance")]
-        public Distance Distance { get; set; }
-
-        [JsonProperty("bearing")]
-        public Distance Bearing { get; set; }
     }
 
     public class ForecastLinks
