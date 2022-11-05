@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace WeatherApi.Objects.SubObjects
+namespace WeatherApi.Objects.SubObjects;
+
+public class Coordinates
 {
-    public class Coordinates
-    {
 
-        [JsonProperty("type")]
-        public string Shape { get; set; }
+    [JsonProperty("type")]
+    public string Shape { get; set; }
 
-        [JsonProperty("coordinates")]
-        public List<List<List<double>>> CoordinateList { get; set; }
-    }
+    [JsonProperty("coordinates")]
+    public List<List<List<double>>> CoordinateList { get; set; }
 }

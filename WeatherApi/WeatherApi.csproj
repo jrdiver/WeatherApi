@@ -15,6 +15,7 @@
     <Description>API Connector for Weather.Gov</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

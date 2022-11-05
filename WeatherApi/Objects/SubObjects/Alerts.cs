@@ -2,14 +2,17 @@
 
 namespace WeatherApi.Objects.SubObjects;
 
-public class RelativeLocation
+public class Alerts
 {
+    [JsonProperty("id")]
+    public string Id { get; set; }
+
     [JsonProperty("type")]
     public string Type { get; set; }
 
     [JsonProperty("geometry")]
-    public Geometry Geometry { get; set; }
+    public object Geometry { get; set; }
 
     [JsonProperty("properties")]
-    public CityInfo Properties { get; set; }
+    public Properties Properties { get; set; }
 }

@@ -1,19 +1,18 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherApi.Objects.SubObjects
+namespace WeatherApi.Objects.SubObjects;
+
+public class CityInfo
 {
-    public class CityInfo
-    {
-        [JsonProperty("city")]
-        public string City { get; set; }
+    [JsonProperty("city")]
+    public string City { get; set; }
 
-        [JsonProperty("state")]
-        public string State { get; set; }
+    [JsonProperty("state")]
+    public string State { get; set; }
 
-        [JsonProperty("distance")]
-        public Measurement Distance { get; set; }
+    [JsonProperty("distance")]
+    public Measurement Distance { get; set; }
 
-        [JsonProperty("bearing")]
-        public Measurement Bearing { get; set; }
-    }
+    [JsonProperty("bearing")]
+    public Measurement Bearing { get; set; }
 }
